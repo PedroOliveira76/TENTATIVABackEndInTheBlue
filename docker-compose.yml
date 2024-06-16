@@ -1,0 +1,23 @@
+
+services:
+  postgres:
+    image: bitnami/postgresql:latest
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=postgres 
+      - POSTGRES_PASSWORD=loc@l
+      - POSTGRES_DB=intheblue
+    volumes:
+      - polls_pg_data:/bitnami/postgresql
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - '8080:80'
+
+volumes:
+  polls_pg_data:
